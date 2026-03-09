@@ -121,13 +121,13 @@ if command -v ufw &> /dev/null && sudo ufw status | grep -q 'Status: active'; th
     sudo ufw allow 8443/tcp
 fi
 
-if [ -d "/etc/letsencrypt/live/$DOMAIN" ]; then
-    echo -e "${GREEN}✔ SSL-сертификаты для домена $DOMAIN уже существуют.${NC}"
-else
-    echo -e "${YELLOW}Получаем SSL-сертификаты для $DOMAIN...${NC}"
-    sudo certbot --nginx -d $DOMAIN --email $EMAIL --agree-tos --non-interactive --redirect
-    echo -e "${GREEN}✔ SSL-сертификаты успешно получены.${NC}"
-fi
+#if [ -d "/etc/letsencrypt/live/$DOMAIN" ]; then
+#    echo -e "${GREEN}✔ SSL-сертификаты для домена $DOMAIN уже существуют.${NC}"
+#else
+#    echo -e "${YELLOW}Получаем SSL-сертификаты для $DOMAIN...${NC}"
+#    sudo certbot --nginx -d $DOMAIN --email $EMAIL --agree-tos --non-interactive --redirect
+#    echo -e "${GREEN}✔ SSL-сертификаты успешно получены.${NC}"
+#fi
 
 echo -e "\n${CYAN}Шаг 4: Настройка Nginx...${NC}"
 read_input "Какой порт вы будете использовать для вебхуков YooKassa? (443 или 8443, рекомендуется 443): " YOOKASSA_PORT_INPUT
